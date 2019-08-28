@@ -56,6 +56,11 @@ public class ventana extends javax.swing.JFrame {
         });
 
         NomEst.setColumns(10);
+        NomEst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NomEstActionPerformed(evt);
+            }
+        });
 
         Codigo.setColumns(10);
         Codigo.addActionListener(new java.awt.event.ActionListener() {
@@ -110,6 +115,7 @@ public class ventana extends javax.swing.JFrame {
                         .addComponent(Aceptar)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
                         .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(CanNot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -205,6 +211,10 @@ public class ventana extends javax.swing.JFrame {
     private void DatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DatosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_DatosActionPerformed
+
+    private void NomEstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomEstActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NomEstActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

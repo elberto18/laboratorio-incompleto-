@@ -1,97 +1,90 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package materia;
-
+import java.util.Scanner;
+/**
+ *
+ * @author Usuario
+ */
 public class Estudiante {
-    private String nombre;
-    private int codigo;
-    private String asignatura;
-    private int canNotas;
-    private double [] notas;
-    private int [] porNotas;
-    private double notaFinal = 0;
-            
-    public void setnombre(String nombre){
-        this.nombre=nombre;
-    }
-    public String getnombre(){
-        return nombre;
-    }
+   
+    private String Nombre;
+    private String Asignatura;
+    private int NumeroNotas;
+    private double Notas[];
+    private double Porcentajes[];
+    private double NotaFinal; 
     
-    public void setcodigo(int codigo){
-        this.codigo=codigo;
-    }
-    public int getcodigo(){
-        return codigo;
-    }
+    public void setNombre(String Nombre){
+    this.Nombre=Nombre;}
+    public void setAsignatura(String Asignatura){
+    this.Asignatura=Asignatura;}
+    public void setNumeroNotas(int NumeroNotas){
+    this.NumeroNotas=NumeroNotas;}
+    public void setNotas(double[] Notas){
+    this.Notas=Notas;}
+    public void setPorcentajes(double[] Porcenajes){
+    this.Porcentajes=Porcenajes;}
+    public void setNotaFinal(double NotaFinal){
+    this.NotaFinal=NotaFinal;}
     
-    public void setasignatura(String asignatura){
-        this.asignatura=asignatura;
-    }
-    public String getasignatura(){
-        return asignatura;
-    }
+    public String getNombre(){
+    return Nombre;}
+    public String getAsignatura(){
+    return Asignatura;}
+    public int getNumeroNotas(){
+    return NumeroNotas;}
+    public double[] getNotas(){
+    return Notas;}
+    public double[] getPorcentajes(){
+    return Porcentajes;}
+    public double getNotaFinal(){
+    return NotaFinal;} 
+   
+   /*metodos*/
+    Scanner teclado = new Scanner(System.in);
+    public void datos(){
+  
+    System.out.println("Nombre del estudiante: ");
+    Nombre=teclado.nextLine();
+    System.out.println("Dijite la Asignatura: ");
+    Asignatura=teclado.nextLine();
+   
+    double aux;
+  
+    System.out.print("Dijite el numero de notas sacadas en la asignatura: ");
+    NumeroNotas=teclado.nextInt();
     
-    public void setcanNotas(int canNotas){
-        this.canNotas=canNotas;
-    }
-    public int getcanNotas(){
-        return canNotas;
-    }
     
-    public void setnotas(double [] notas){
-        this.notas=notas;
-    }
-    public double [] getnotas (){
-        return notas;
-    }
+    Notas=new double[NumeroNotas];
+    Porcentajes=new double[NumeroNotas];
     
-    public void setporNotas(int [] porNotas){
-        this.porNotas=porNotas;
-    }
-    public int [] getporNotas (){
-        return porNotas;
-    }
+    for(int i=0;i<(NumeroNotas-1);i++){
+    System.out.println("Dijite su nota num: "+ (i+1));
+    Notas[i]=teclado.nextDouble();
+    System.out.println("Porcentaje de la nota: ");
+    Porcentajes[i]=teclado.nextDouble();
+    aux=(Notas[i])*(Porcentajes[i]/100);
+    NotaFinal+=aux;}
     
-    public double calNotaFinal(){
-        for (int i = 0; i < canNotas; i++) {
-            notaFinal += notas[i]*((double)porNotas[i]/100);
-        }
-        return notaFinal;
-    }
+    System.out.println("Notas: "+"Porcentaje: ");
+    for(int i=0;i<(NumeroNotas-1);i++){
+    System.out.println(Notas[i]+"       "+Porcentajes[i]);}
     
-    public void ImprimirDaots(){
-        System.out.println("Nobre Estudiante: "+ nombre);
-        System.out.println("Codigo Estudiante: "+ codigo);
-        System.out.println("Nobre Asignatura: "+ asignatura);
-        System.out.println("Nota Final: "+ calNotaFinal());
-    }
+    if(NotaFinal>=3){
+    System.out.println("Acaba de aprobar la materia, felicitaciones");}
+    else
+    if(NotaFinal<3){}
+    else
+    if(NotaFinal>=2.60 && NotaFinal<=2.99){
+    System.out.println("Reprobo la materia, pero puede recuperarla");}
+    else
+    if(NotaFinal<2.60){
+    System.out.println("Reprobo la materia, y no puede recuperarla");}}
     
-    public void resultadoMateria(){
-        if (calNotaFinal() < 2.5) {
-            System.out.println("El Estudiante perdio la Asignatura");
-        }
-        else    {
-            if (calNotaFinal() >= 2.6 && calNotaFinal() < 3 ){
-                System.out.println("El Estudiante puede validar la Asignatura");
-            }
-            else{
-                System.out.println("El Estudiante aprovo la Asignatura");
-            }
-        }
-    }
+
     
-     public void filNotas(String Fila){
-        String [] Partes;
-        Partes = Fila.split(" ");
-        for (int i = 0; i < canNotas; i++) {
-            notas[i] = Double.parseDouble(Partes[i]);
-        }
-     }
-     
-     public void filPorce(String Fila){
-        String [] Partes;
-        Partes = Fila.split(" ");
-        for (int i = 0; i < canNotas; i++) {
-            porNotas[i] = Integer.parseInt(Partes[i]);
-        }
-     }
 }
